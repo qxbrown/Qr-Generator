@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QR</title>
+    <title>QR Generator</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -13,13 +14,13 @@
       <main>
         <div class="header">
           <h2>QR Generator</h2>
-          <input id="text" type="text" value="" placeholder="Type Your Text..." autocomplete="off" />   
+          <input id="text" type="text" value="" placeholder="Type Your Text..." autocomplete="off" required/>   
         </div>  
         <div class="qr-container">
           <div id="qrcode"></div>
         </div>
         <div class="footer">
-          <a class="button" download>Download</a>
+          <a id="down" href="" class="button" download>Download</a>
         </div>
     </main>
     </section>
@@ -28,14 +29,24 @@
     <script src="qrcode.js"></script>
     <script type="text/javascript">
       var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width:250,
+        width: 250,
         height: 250,
       });
 
       function makeCode() {
         var elText = document.getElementById("text");
-
         qrcode.makeCode(elText.value);
+
+        var qr = document.getElementById("downloadId").src;
+
+        var downbtn =
+          qr.length == 0
+            ? "data:image/png;base64,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"
+            : qr;
+
+        var footer = document.getElementsByClassName("footer")[0];
+
+        footer.innerHTML = `<a id="down" href=${downbtn} class="button" download>Download</a>`;
       }
 
       makeCode();

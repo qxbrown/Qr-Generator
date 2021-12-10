@@ -54,7 +54,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .footer {
@@ -71,6 +71,7 @@ input {
   color: #ffffff;
   font-weight: 600;
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 
 @media (max-width: 575.99px) {
