@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <section id="wrapper">
+      <main>
+        <div class="header">
+          <h2>QR Generator</h2>
+          <input id="text" type="text" value="" placeholder="Type Your Text..." autocomplete="off" />   
+        </div>  
+        <div class="qr-container">
+          <div id="qrcode"></div>
+        </div>
+        <div class="footer">
+          <a class="button" download>Download</a>
+        </div>
+    </main>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="qrcode.js"></script>
+    <script type="text/javascript">
+      var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width:250,
+        height: 250,
+      });
+
+      function makeCode() {
+        var elText = document.getElementById("text");
+
+        qrcode.makeCode(elText.value);
+      }
+
+      makeCode();
+
+      $("#text")
+        .on("blur", function () {
+          makeCode();
+        })
+        .on("keydown", function (e) {
+          if (e.keyCode == 13) {
+            makeCode();
+          }
+        });
+    </script>
+  </body>
+</html>
