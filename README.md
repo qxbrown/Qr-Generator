@@ -1,2 +1,4 @@
 # Qr-Generator
-Qr code generator
+A simple qr code generator.
+
+NEVERMIND!
