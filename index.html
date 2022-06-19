@@ -5,32 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR Generator</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
+    <section
+      id="wrapper"
+      class="flex h-screen w-full items-center justify-center bg-indigo-300 p-2"
+    >
+      <main
+        class="w-full max-w-lg rounded-3xl bg-white/50 p-4 py-8 sm:p-8 text-center flex flex-col items-center"
+      >
+        <div class="header w-full">
+          <h2 class="text-2xl font-bold text-black/70">QR Generator</h2>
+          <input
+            id="text"
+            type="text"
+            value=""
+            placeholder="Type your text here.."
+            autocomplete="off"
+            class="mt-8 h-14 w-full rounded-lg bg-white p-2 font-medium tracking-wide text-black/70 outline-none"
+            required
+          />
+        </div>
 
-    <section id="wrapper">
-      <main>
-        <div class="header">
-          <h2>QR Generator</h2>
-          <input id="text" type="text" value="" placeholder="Type Your Text..." autocomplete="off" required/>   
-        </div>  
-        <div class="qr-container">
+        <div class="qr-container my-6">
           <div id="qrcode"></div>
         </div>
-        <div class="footer">
-          <a id="down" href="" class="button" download>Download</a>
-        </div>
-    </main>
+
+        <a id="down" href="" class="button w-full" download>
+          <div
+            class="footer mt-2 flex h-12 w-full items-center justify-center text-white text-lg font-semibold rounded-lg bg-indigo-500"
+          >
+            Download
+          </div>
+        </a>
+      </main>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="qrcode.js"></script>
     <script type="text/javascript">
       var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width: 250,
-        height: 250,
+        width: 300,
+        height: 300,
       });
 
       function makeCode() {
